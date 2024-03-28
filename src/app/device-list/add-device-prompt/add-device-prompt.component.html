@@ -1,0 +1,279 @@
+@if(isAddDeviceVisible){
+<div
+  class="fixed inset-0 z-50 justify-center items-center flex bg-black bg-opacity-70"
+>
+  <div class="border-2 rounded-lg relative flex flex-col max-w-xl mx-auto">
+    <div class="relative p-6 flex-auto bg-slate-100 rounded-lg">
+      <form [formGroup]="deviceForm" (ngSubmit)="onSubmit()" class="space-y-4">
+        <div class="flex space-x-4">
+          <div class="flex flex-col w-1/3">
+            <label class="font-bold text-sm text-gray-700">Device Name:</label>
+            <input
+              type="text"
+              formControlName="device_name"
+              class="border p-1 rounded shadow-inner max-w-40"
+            />
+          </div>
+
+          <div class="flex flex-col w-1/3">
+            <label class="font-bold text-sm text-gray-700">Device Type:</label>
+            <select
+              formControlName="device_type"
+              class="border p-1 rounded shadow-inner w-40 "
+            >
+              <option class="font-medium">iOS</option>
+              <option class="font-medium">Android</option>
+              <option class="font-medium">iPad</option>
+              <option class="font-medium">Android tablet</option>
+              <option class="font-medium">TV</option>
+              <option class="font-medium">STB</option>
+              <option class="font-medium">Fire TV</option>
+              <option class="font-medium">Others</option>
+            </select>
+          </div>
+          <div class="flex flex-col w-1/3">
+            <label class="font-bold text-sm text-gray-700"
+              >Device Tag ID:</label
+            >
+            <input
+              type="text"
+              formControlName="device_tagId"
+              class="border p-1 rounded shadow-inner max-w-40"
+            />
+          </div>
+        </div>
+        <div class="flex space-x-4">
+          <div class="flex flex-col w-1/3">
+            <label class="font-bold text-sm text-gray-700"
+              >Received Date:</label
+            >
+            <input
+              type="date"
+              formControlName="received_date"
+              class="border p-1 rounded shadow-inner w-40"
+            />
+          </div>
+
+          <div class="flex flex-col w-1/3">
+            <label class="font-bold text-sm text-gray-700">Accessories:</label>
+
+            <div class="relative border p-2 rounded shadow-inner w-40 bg-white flex justify-end">
+              <input type="checkbox" id="sortbox" class="absolute hidden" />
+              <label
+                for="sortbox"
+                class="cursor-pointer space-x-1"
+              >
+                <svg
+                  class="h-3 w-3"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </label>
+              <div
+                id="sortboxmenu"
+                class="absolute top-full pl-2 pt-2 z-10 w-40 rounded border border-gray-400 bg-white opacity-0 shadow transition delay-75 ease-in-out pointer-events-none"    
+              >
+                <ul class="block text-right text-gray-900">
+                  <li>
+                    <div class="flex items-center mb-4">
+                      <input
+                        type="checkbox"
+                        value="Adapter"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded"
+                      />
+                      <label
+                        for="default-checkbox"
+                        class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                        >Adapter</label
+                      >
+                    </div>
+                  </li>
+
+                  <li>
+                    <div class="flex items-center mb-4">
+                      <input
+                        type="checkbox"
+                        value="Headphones"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded"
+                      />
+                      <label
+                        for="default-checkbox"
+                        class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                        >Headphones</label
+                      >
+                    </div>
+                  </li>
+
+                  <li>
+                    <div class="flex items-center mb-4">
+                      <input
+                        type="checkbox"
+                        value="USBCable"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded"
+                      />
+                      <label
+                        for="default-checkbox"
+                        class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                        >USBCable</label
+                      >
+                    </div>
+                  </li>
+
+                  <li>
+                    <div class="flex items-center mb-4">
+                      <input
+                        type="checkbox"
+                        value="USBConnector"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded"
+                      />
+                      <label
+                        for="default-checkbox"
+                        class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                        >USBConnector</label
+                      >
+                    </div>
+                  </li>
+
+                  <li>
+                    <div class="flex items-center mb-4">
+                      <input
+                        type="checkbox"
+                        value="DeviceCover"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded"
+                      />
+                      <label
+                        for="default-checkbox"
+                        class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                        >DeviceCover</label
+                      >
+                    </div>
+                  </li>
+
+                  <li>
+                    <div class="flex items-center mb-4">
+                      <input
+                        type="checkbox"
+                        value="DeviceBox"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded"
+                      />
+                      <label
+                        for="default-checkbox"
+                        class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                        >DeviceBox</label
+                      >
+                    </div>
+                  </li>
+
+                  <li>
+                    <div class="flex items-center mb-4">
+                      <input
+                        type="checkbox"
+                        value="Remote"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded"
+                      />
+                      <label
+                        for="default-checkbox"
+                        class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                        >Remote</label
+                      >
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-col w-1/3">
+            <label class="font-bold text-sm text-gray-700"
+              >Device OS Version:</label
+            >
+            <input
+              type="text"
+              formControlName="device_osversion"
+              class="border p-1 rounded shadow-inner max-w-40"
+            />
+          </div>
+        </div>
+        <div class="flex space-x-4">
+          <div class="flex flex-col w-1/3">
+            <label class="font-bold text-sm text-gray-700">Device PIN:</label>
+            <input
+              type="password"
+              formControlName="devicepin"
+              class="border p-1 rounded shadow-inner max-w-40"
+            />
+          </div>
+
+          <div class="flex flex-col w-1/3">
+            <label class="font-bold text-sm text-gray-700">Owner:</label>
+            <select
+              formControlName="owner"
+              class="border p-1 rounded shadow-inner w-40"
+            >
+              <option>User1</option>
+              <option>User2</option>
+              <option>User3</option>
+            </select>
+          </div>
+          <div class="flex w-1/3 flex-col">
+            <label class="font-bold text-sm text-gray-700 mr-1"
+              >Whitelisted:
+            </label>
+
+            <label class="inline-flex items-center cursor-pointer">
+              <input
+                formControlName="whitelisted"
+                type="checkbox"
+                value="yes"
+                class="sr-only peer"
+              />
+              <div
+                class="relative w-11 h-6 mt-2 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-gray-400"
+              ></div>
+            </label>
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <label class="font-bold text-sm text-gray-700">Description:</label>
+          <textarea
+            formControlName="description"
+            class="block p-2.5 w-full text-sm bg-gray-50 rounded-lg border border-gray-300"
+          ></textarea>
+        </div>
+        <div class="flex flex-col">
+          <label class="font-bold text-sm text-gray-700">Device Log:</label>
+          <textarea
+            type="text"
+            formControlName="device_log"
+            class="block p-2.5 w-full text-sm bg-gray-50 rounded-lg border border-gray-300"
+          ></textarea>
+        </div>
+        <div class="flex space-x-4 justify-end">
+          <button
+            type="submit"
+            [disabled]="!deviceForm.valid"
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold p-2 rounded"
+          >
+            Save
+          </button>
+          <button
+            class="bg-gray-500 hover:bg-gray-600 text-white font-bold p-2 rounded"
+            (click)="close()"
+          >
+            Close
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+}

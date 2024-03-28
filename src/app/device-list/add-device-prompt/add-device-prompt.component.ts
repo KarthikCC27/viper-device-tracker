@@ -1,22 +1,28 @@
-import { trigger,transition,style,animate } from '@angular/animations';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { Component, Inject } from '@angular/core';
+import { Component, EventEmitter, Inject, Input, Output } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-add-device-prompt',
   standalone: true,
-  imports: [ReactiveFormsModule, HttpClientModule],
+  imports: [ReactiveFormsModule, HttpClientModule, CommonModule],
   templateUrl: './add-device-prompt.component.html',
   styleUrl: './add-device-prompt.component.css',
-
 })
 export class AddDevicePromptComponent {
   constructor(public httpClient: HttpClient) {}
 
+  @Input() isAddDeviceVisible: Boolean = false;
+  @Output() closeAddModal = new EventEmitter<void>();
+  @Output() AddDeviceModal = new EventEmitter<FormGroup>();
+
+  close() {
+    this.closeAddModal.emit();
+  }
+
   private url = 'https://mpd3d9bd6b2a9869c8bf.free.beeceptor.com';
-  showModal: Boolean = false;
 
   deviceForm = new FormGroup({
     device_type: new FormControl(''),
@@ -41,10 +47,20 @@ export class AddDevicePromptComponent {
           console.log(error);
         }
       );
-    this.toggleModal();
+    const checkboxes: NodeListOf<HTMLInputElement> = document.querySelectorAll(
+      '#sortboxmenu input[type="checkbox"]:checked'
+    );
+    const checkedValues: string[] = [];
+    checkboxes.forEach(function (checkbox) {
+      checkedValues.push(checkbox.value);
+    });
+    console.log(checkedValues);
+    this.toggleAddDeviceModal();
+    this.AddDeviceModal.emit(this.deviceForm);
+    this.closeAddModal.emit();
   }
 
-  toggleModal() {
-    this.showModal = !this.showModal;
+  toggleAddDeviceModal() {
+    this.isAddDeviceVisible = !this.isAddDeviceVisible;
   }
 }

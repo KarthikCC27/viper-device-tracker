@@ -1,0 +1,22 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: auto 1fr; 
+    grid-template-rows: auto;
+    grid-template-areas:
+      "header header"
+      "side-nav content";
+    height: 100vh; 
+  }
+  
+  app-header {
+    grid-area: header;
+  }
+  
+  app-side-nav {
+    grid-area: side-nav;
+  }
+  
+  app-device-list {
+    grid-area: content;
+  }
+  

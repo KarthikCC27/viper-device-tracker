@@ -1,0 +1,5 @@
+
+#sortbox:checked ~ #sortboxmenu {
+    opacity: 1;
+    pointer-events: auto;
+}
