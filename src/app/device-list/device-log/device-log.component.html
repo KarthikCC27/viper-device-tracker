@@ -1,0 +1,20 @@
+@if(isDeviceLogVisible){
+<div class="fixed inset-0 z-50 justify-center items-center flex bg-black bg-opacity-70 " (click)="close()">
+  <div class="rounded relative flex flex-col w-[50%]">
+    <div class="relative flex-auto bg-slate-100 rounded-lg ">
+      <div class="justify-center items-center">
+        <ag-grid-angular
+          class="ag-theme-quartz w-[100%] h-96"
+          [rowData]="row_data"
+          [columnDefs]="colDefs"
+          [defaultColDef]="defaultColDef"
+          [autoSizeStrategy]="autoSizeStrategy"
+          rowSelection="multiple"
+          (gridReady)="onGridReady($event)"
+        >
+        </ag-grid-angular>
+      </div>
+    </div>
+  </div>
+</div>
+}

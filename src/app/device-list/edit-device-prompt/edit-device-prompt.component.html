@@ -1,0 +1,160 @@
+@if(isEditDeviceVisible){
+    <div
+      class="fixed inset-0 z-50 justify-center items-center flex bg-black bg-opacity-70"
+    >
+      <div class="rounded-lg relative flex flex-col max-w-xl mx-auto">
+        <div class="relative p-6 flex-auto bg-slate-100 rounded-lg">
+          <form [formGroup]="deviceForm" (ngSubmit)="onSubmit()" class="space-y-4">
+            <div class="flex space-x-4">
+              <div class="flex flex-col w-1/3">
+                <label class="font-bold text-sm text-gray-700">Device Name:</label>
+                <input
+                  type="text"
+                  formControlName="device_name"
+                  class="border p-1 rounded shadow-inner max-w-40"
+                />
+                <small
+                  class="text-red-500 text-xxs"
+                  *ngIf="isInvalid('device_name')"
+                >
+                  Device Name is required*
+                </small>
+              </div>
+    
+              <div class="flex flex-col w-1/3">
+                <label class="font-bold text-sm text-gray-700">Device Type:</label>
+                <select
+                  formControlName="device_type"
+                  class="border p-1 rounded shadow-inner w-40"
+                >
+                  <option class="font-medium">iOS</option>
+                  <option class="font-medium">Android</option>
+                  <option class="font-medium">iPad</option>
+                  <option class="font-medium">Android tablet</option>
+                  <option class="font-medium">TV</option>
+                  <option class="font-medium">STB</option>
+                  <option class="font-medium">Fire TV</option>
+                  <option class="font-medium">Others</option>
+                </select>
+              </div>
+              <div class="flex flex-col w-1/3">
+                <label class="font-bold text-sm text-gray-700"
+                  >Device Tag ID:</label
+                >
+                <input
+                  type="text"
+                  formControlName="device_tagId"
+                  class="border p-1 rounded shadow-inner max-w-40"
+                />
+                <small
+                  class="text-red-500 text-xxs"
+                  *ngIf="isInvalid('device_tagId')"
+                >
+                  Device Tag ID is required*
+                </small>
+              </div>
+            </div>
+            <div class="flex space-x-4">
+              <div class="flex flex-col w-1/3">
+                <label class="font-bold text-sm text-gray-700">From Date:</label>
+                <input
+                  type="date"
+                  formControlName="fromDate"
+                  class="border p-1 rounded shadow-inner w-40"
+                />
+                <small class="text-red-500 text-xxs" *ngIf="isInvalid('fromDate')">
+                  From Date is required*
+                </small>
+              </div>
+    
+              <div class="flex flex-col w-1/3">
+                <label class="font-bold text-sm text-gray-700">To Date:</label>
+                <input
+                  type="date"
+                  formControlName="toDate"
+                  class="border p-1 rounded shadow-inner w-40"
+                />
+                <small class="text-red-500 text-xxs" *ngIf="isInvalid('toDate')">
+                  To Date is required*
+                </small>
+              </div>
+    
+              <div class="flex flex-col w-1/3">
+                <label class="font-bold text-sm text-gray-700">Accessories:</label>
+                <ng-multiselect-dropdown
+                  formControlName="accessories"
+                  [placeholder]="'Choose'"
+                  [settings]="dropdownSettings"
+                  [data]="accessories"
+                  [(ngModel)]="selectedItems"
+                  class="bg-white rounded shadow-inner w-40"
+                >
+                </ng-multiselect-dropdown>
+              </div>
+            </div>
+            <div class="flex space-x-4">
+                <div class="flex flex-col w-1/3">
+                    <label class="font-bold text-sm text-gray-700"
+                      >Update:</label
+                    >
+                    <input
+                      type="text"
+                      formControlName="update"
+                      class="border p-1 rounded shadow-inner max-w-40"
+                    />
+                    <small
+                      class="text-red-500 text-xxs"
+                      *ngIf="isInvalid('update')"
+                    >
+                      Update is required*
+                    </small>
+                  </div>
+              <div class="flex w-1/3 flex-col">
+                <label class="font-bold text-sm text-gray-700 mr-1"
+                  >Status:
+                </label>
+    
+                <label class="inline-flex items-center cursor-pointer">
+                  <input
+                    formControlName="status"
+                    type="checkbox"
+                    class="sr-only peer"
+                  />
+                  <div
+                    class="relative w-11 h-6 mt-2 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-400"
+                  ></div>
+                </label>
+              </div>
+            </div>
+            <div class="flex flex-col">
+              <label class="font-bold text-sm text-gray-700">Comments:</label>
+              <textarea
+                formControlName="comments"
+                class="block p-2.5 w-full text-sm bg-gray-50 rounded-lg border border-gray-300"
+              ></textarea>
+              <small class="text-red-500 text-xxs" *ngIf="isInvalid('comments')">
+                Comments required*
+              </small>
+            </div>
+    
+            <div class="flex space-x-4 justify-end">
+              <button
+                type="submit"
+                [disabled]="!deviceForm.valid"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold p-2 rounded"
+              >
+                Update
+              </button>
+              <button
+                class="bg-gray-500 hover:bg-gray-600 text-white font-bold p-2 rounded"
+                (click)="close()"   
+              >
+                Close
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    }
+    

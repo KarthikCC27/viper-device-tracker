@@ -1,5 +1,3 @@
-
-#sortbox:checked ~ #sortboxmenu {
-    opacity: 1;
-    pointer-events: auto;
+input[type="email"] :disabled{
+    border: 10px;
 }

@@ -28,7 +28,9 @@ export class RequestDevicePromptComponent {
     this.toggleRequestDeviceModal();
     this.closeRequestModal.emit();
     this.RequestDeviceModal.emit(this.RequestDeviceForm);
+    alert(this.RequestDeviceForm.value.device_type+' device requested');
   }
+
 
   toggleRequestDeviceModal() {
     this.isRequestDeviceVisible = !this.isRequestDeviceVisible;

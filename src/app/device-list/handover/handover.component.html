@@ -1,4 +1,4 @@
-@if(isAddDeviceVisible){
+@if(isHandOverDeviceVisible){
 <div
   class="fixed inset-0 z-50 justify-center items-center flex bg-black bg-opacity-70"
 >
@@ -56,19 +56,26 @@
         </div>
         <div class="flex space-x-4">
           <div class="flex flex-col w-1/3">
-            <label class="font-bold text-sm text-gray-700"
-              >Received Date:</label
-            >
+            <label class="font-bold text-sm text-gray-700">From Date:</label>
             <input
               type="date"
-              formControlName="received_date"
+              formControlName="fromDate"
               class="border p-1 rounded shadow-inner w-40"
             />
-            <small
-              class="text-red-500 text-xxs"
-              *ngIf="isInvalid('received_date')"
-            >
-              Received Date is required*
+            <small class="text-red-500 text-xxs" *ngIf="isInvalid('fromDate')">
+              From Date is required*
+            </small>
+          </div>
+
+          <div class="flex flex-col w-1/3">
+            <label class="font-bold text-sm text-gray-700">To Date:</label>
+            <input
+              type="date"
+              formControlName="toDate"
+              class="border p-1 rounded shadow-inner w-40"
+            />
+            <small class="text-red-500 text-xxs" *ngIf="isInvalid('toDate')">
+              To Date is required*
             </small>
           </div>
 
@@ -84,44 +91,12 @@
             >
             </ng-multiselect-dropdown>
           </div>
-
-          <div class="flex flex-col w-1/3">
-            <label class="font-bold text-sm text-gray-700"
-              >Device OS Version:</label
-            >
-            <input
-              type="text"
-              formControlName="device_osversion"
-              class="border p-1 rounded shadow-inner max-w-40"
-            />
-            <small
-              class="text-red-500 text-xxs"
-              *ngIf="isInvalid('device_osversion')"
-            >
-              Device OS Version is required*
-            </small>
-          </div>
         </div>
         <div class="flex space-x-4">
           <div class="flex flex-col w-1/3">
-            <label class="font-bold text-sm text-gray-700">Device PIN:</label>
-            <input
-              type="password"
-              formControlName="devicepin"
-              class="border p-1 rounded shadow-inner max-w-40"
-            />
-            <small
-              class="text-red-500 text-xxs"
-              *ngIf="isInvalid('device_pin')"
-            >
-              Device PIN is required*
-            </small>
-          </div>
-
-          <div class="flex flex-col w-1/3">
-            <label class="font-bold text-sm text-gray-700">Owner:</label>
+            <label class="font-bold text-sm text-gray-700">Handover:</label>
             <select
-              formControlName="owner"
+              formControlName="handOver"
               class="border p-1 rounded shadow-inner w-40"
             >
               <option>User1</option>
@@ -131,13 +106,14 @@
           </div>
           <div class="flex w-1/3 flex-col">
             <label class="font-bold text-sm text-gray-700 mr-1"
-              >Whitelisted:
+              >Status:
             </label>
 
             <label class="inline-flex items-center cursor-pointer">
               <input
-                formControlName="whitelisted"
+                formControlName="status"
                 type="checkbox"
+                value="yes"
                 class="sr-only peer"
               />
               <div
@@ -146,34 +122,17 @@
             </label>
           </div>
         </div>
-
         <div class="flex flex-col">
-          <label class="font-bold text-sm text-gray-700">Email:</label >
-          <input type="email" class="border p-1 rounded shadow-inner" [disabled]="isEmailDisabled"/>
-        </div>
-
-        <div class="flex flex-col">
-          <label class="font-bold text-sm text-gray-700">Description:</label>
+          <label class="font-bold text-sm text-gray-700">Comments:</label>
           <textarea
-            formControlName="description"
-            class="block p-2.5 h-20 w-full text-sm bg-gray-50 rounded-lg border border-gray-300"
-            placeholder="Mention further details i.e. Received by, New/Used Device, Procured from US/Chennai, Any existing damages"
-          ></textarea>
-          <small class="text-red-500 text-xxs" *ngIf="isInvalid('description')">
-            Description is required*
-          </small>
-        </div>
-        <div class="flex flex-col">
-          <label class="font-bold text-sm text-gray-700">Device Log:</label>
-          <textarea
-            type="text"
-            formControlName="device_log"
+            formControlName="comments"
             class="block p-2.5 w-full text-sm bg-gray-50 rounded-lg border border-gray-300"
           ></textarea>
-          <small class="text-red-500 text-xxxs" *ngIf="isInvalid('device_log')">
-            Device Log is required*
+          <small class="text-red-500 text-xxs" *ngIf="isInvalid('comments')">
+            Comments required*
           </small>
         </div>
+
         <div class="flex space-x-4 justify-end">
           <button
             type="submit"

@@ -16,15 +16,22 @@
     Add Device
   </button>
 </div>
+
   <app-request-device-prompt [isRequestDeviceVisible]="isRequestDeviceVisible" (closeRequestModal)="toggleRequestDeviceModal()" (RequestDeviceModal)="ReqDevice($event)"></app-request-device-prompt>
   <app-add-device-prompt [isAddDeviceVisible]="isAddDeviceVisible" (closeAddModal)="toggleAddDeviceModal()" (AddDeviceModal)="addRow($event)"></app-add-device-prompt>
+  <app-del-device-prompt [isDelDeviceVisible]="isDelDeviceVisible" (closeDelModal)="toggleDelDeviceModal()" (delDevice)="delDevice($event)"></app-del-device-prompt>
+  <app-handover [isHandOverDeviceVisible]="isHandOverVisible" (closeHandOverModal)="toggleHandOverModal()"></app-handover>
+  <app-device-log [isDeviceLogVisible]="isDeviceLogVisible" (closeDeviceLogModal)="toggleDeviceLogModal()"></app-device-log>
+  <app-edit-device-prompt [isEditDeviceVisible]="isEditDeviceVisible" (closeEditModal)="toggleEditDeviceModal()" [formdata]="formData"></app-edit-device-prompt>
+
   <ag-grid-angular
-      style="width: 100%; height: 400px;"
-      class="ag-theme-quartz mx-auto"
+      class="ag-theme-quartz w-[100%] h-96 "
       [rowData]="row_data"
       [columnDefs]="colDefs"
       [defaultColDef]="defaultColDef"
+      [autoSizeStrategy]="autoSizeStrategy"
       rowSelection="multiple" 
       (gridReady)="onGridReady($event)"
   ></ag-grid-angular>
 </div>
+>
